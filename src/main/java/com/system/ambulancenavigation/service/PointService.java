@@ -1,4 +1,7 @@
 package com.system.ambulancenavigation.service;
 
-public interface PointService {
+import com.system.ambulancenavigation.base.BaseService;
+import com.system.ambulancenavigation.model.Point;
+
+public interface PointService extends BaseService<Point, Long> {
 }
