@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/home")
 public class WebController {
 
-  @GetMapping
-  public String home(){
-    return "home";
-  }
+    @GetMapping
+    public String home() {
+        return "home";
+    }
 }
