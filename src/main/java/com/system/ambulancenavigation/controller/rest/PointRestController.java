@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -30,7 +31,16 @@ public class PointRestController {
                                   @RequestParam("endX") Double endPointX,
                                   @RequestParam("startY") Double startPointY,
                                   @RequestParam("endY") Double endPointY) {
-        return pointService.getListPointByArc(startPointX, endPointX, startPointY, endPointY);
+        return pointService.getPointsByArc(startPointX, endPointX, startPointY, endPointY);
+    }
+
+    @GetMapping("/getPointsByTimeAndArc")
+    List<Point> getPointByTimeAndArc(@RequestParam("startX") Double startPointX,
+                                     @RequestParam("endX") Double endPointX,
+                                     @RequestParam("startY") Double startPointY,
+                                     @RequestParam("endY") Double endPointY,
+                                     @RequestParam("time") String time){
+        return pointService.getPointsByArcAndTime(startPointX, endPointX, startPointY, endPointY,time);
     }
 
 
