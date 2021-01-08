@@ -1,8 +1,11 @@
 package com.system.ambulancenavigation.service;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.system.ambulancenavigation.base.BaseServiceImpl;
 import com.system.ambulancenavigation.model.Point;
+import com.system.ambulancenavigation.model.json.NearestPoint;
 import com.system.ambulancenavigation.repository.PointRepository;
+import jdk.nashorn.internal.ir.ObjectNode;
 import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
@@ -29,15 +32,17 @@ public class PointServiceImpl extends BaseServiceImpl<Point, Long> implements Po
     }
 
     @Override
-    public List<Point> getPointsByArc(Double startPointX, Double endPointX, Double startPointY, Double endPointY) {
-        return pointRepository.getPointsByArc(startPointX, endPointX, startPointY, endPointY);
+    public List<Point> getPoints() {
+        return pointRepository.getPoints();
     }
 
     @Override
-    public List<Point> getPointsByArcAndTime(Double startPointX, Double endPointX, Double startPointY, Double endPointY, String time){
-        DateTimeFormatter formatter=DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        LocalDateTime localDateTime=LocalDateTime.parse(time,formatter);
-        System.out.println(localDateTime.toString());
-        return pointRepository.getPointsByArcAndTime(startPointX,endPointX,startPointY,endPointY,localDateTime);
+    public Object getNearestPoint(Double point) {
+        return pointRepository.getNearestPoint(point);
+    }
+
+    @Override
+    public Object getBestRoad(Integer startPoint, Integer endPoint, String time){
+        return pointRepository.getBestRoad(startPoint,endPoint,time);
     }
 }

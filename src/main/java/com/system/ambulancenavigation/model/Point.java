@@ -1,6 +1,7 @@
 package com.system.ambulancenavigation.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "point")
@@ -18,6 +19,9 @@ public class Point {
 
     @Column(name = "description")
     private String description;
+//
+//    @OneToMany(mappedBy = "point_arc")
+//    private PointArc pointArcs;
 
     public String getDescription() {
         return description;

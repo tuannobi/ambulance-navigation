@@ -1,0 +1,109 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+input, button, input:focus, select {
+  outline: none;
+}
+.content {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+}
+.sidebar {
+  width: 20%;
+  border: 1px solid #6c6060;
+}
+#viewDiv {
+  width: 80%;
+  border: none;
+}
+.position {
+  padding: 40px 15px;
+  background-color: #3978eb;
+  color: white;
+}
+.start {
+  display: flex;
+}
+.start .fa-circle {
+  color: #ebff00;
+}
+::placeholder {
+  color: #FFF;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #FFF;
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: #FFF;
+}
+.start input {
+  margin-left: 10px;
+  width: 100%;
+  border: none;
+  padding-bottom: 3px;
+  border-bottom: 1px solid white;
+  background-color: #3978eb;
+  color: white;
+}
+.end {
+  display: flex;
+  margin-top: 20px;
+  align-items: center;
+}
+.end select {
+  margin-left: 10px;
+  width: 100%;
+  padding: 8px 4px;
+  background-color: #3978eb;
+  border: 1px solid white;
+  color: white;
+}
+.fa-map-marker-alt {
+  color: #fc6a18;
+}
+.btn {
+  margin: 8px 0;
+  position: relative;
+}
+.btn .btn-back {
+  padding: 6px 12px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 5px;
+  color: #FFF;
+  background-color: #0A2456;
+  border: none;
+}
+.btn .btn-go{
+  padding: 6px 12px;
+  color: #FFF;
+  background-color: #0A2456;
+  border: none;
+  border-radius: 5px;
+  position: absolute;
+  top: 0;
+  right: 30%;
+}
+.time{
+  width: 100%;
+  margin-left: 22px;
+  margin-top: 20px;
+  box-sizing: border-box;
+}
+.time input{
+  padding: 8px 4px;
+  background-color: #3978eb;
+  border: 1px solid white;
+  width: 92%;
+  margin-right: 20px;
+  color: #FFF;
+}

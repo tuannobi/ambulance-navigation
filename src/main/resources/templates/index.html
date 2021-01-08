@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="https://js.arcgis.com/4.15/esri/themes/light/main.css">
+    <script src="https://js.arcgis.com/4.15/"></script>
+    <script src="./script.js"></script>
+</head>
+<body>
+    <div class="content">
+        <div class="sidebar">
+            <div class="position">
+                <div class="start">
+                    <i class="fas fa-circle"></i>
+                    <input type="text" placeholder="Điểm bắt đầu" id="point-start">
+                </div>
+                <div class="end">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <select name="" id="">
+                        <option value="" >Điểm đến</option>
+                        <option value="">Bệnh viện Phạm Ngọc Thạch</option>
+                        <option value="">Bệnh viện Đa khoa Thủ Đức</option>
+                        <option value="">Bệnh viện Nhiệt Đới</option>
+                        <option value="">Bệnh viện Bình Dân</option>
+                    </select>
+                </div>
+                <div class="time">
+                    <input type="time" placeholder="datetime"/>
+                </div>
+                <div class="btn">
+                    <button class="btn-go" id="go">Đi</button>
+                    <button class="btn-back">Quay lại</button>
+                </div>
+            </div>
+        </div>
+        <div id="viewDiv"></div>
+    </div>
+</body>
+</html>

@@ -8,23 +8,20 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public interface PointRepository extends CrudRepository<Point, Long> {
+    @Query(value="select * from point;", nativeQuery = true)
+    List<Point> getPoints();
 
-    @Query(value = "select * from\n"
-            + "point join point_arc a on point.point_id=a.point_id \n"
-            + "join (select arc_id from arc where start_point_x=?1\n"
-            + "and end_point_x=?2\n"
-            + "and start_point_y=?3\n"
-            + "and end_point_y=?4) b on a.arc_id=b.arc_id", nativeQuery = true)
-    List<Point> getPointsByArc(Double startPointX, Double endPointX, Double startPointY, Double endPointY);
+    @Query(value = "SELECT point_id,sqrt(pow((?1-x),2)+pow((?1-y),2)) as distance " +
+            "from point group by point_id ORDER by distance ASC LIMIT 1", nativeQuery = true)
+    Object getNearestPoint(Double point);
 
-    @Query(value = "select * from point join point_arc a on point.point_id=a.point_id\n" +
-            "join (select arc_id from arc where start_point_x=?1\n" +
-            "and end_point_x=?2\n" +
-            "and start_point_y=?3\n" +
-            "and end_point_y=?4) b on a.arc_id=b.arc_id\n" +
-            "and time=?5", nativeQuery = true)
-    List<Point> getPointsByArcAndTime(Double startPointX, Double endPointX, Double startPointY, Double endPointY, LocalDateTime localDateTime);
-
-//    List<Point> getPointsByPolygon();
-
+    @Query(value="select * from (SELECT arc.arc_id, count(*) as time1 from arc " +
+            "inner join point_arc on arc.arc_id= point_arc.arc_id where start_point = ?1 " +
+            "and end_point = ?2 and status = 'good' and time = ?3 group by " +
+            "arc.arc_id having count() >= all (select count(*) from arc inner join " +
+            "point_arc on arc.arc_id= point_arc.arc_id where start_point = ?1 and end_point = ?2 " +
+            "and status = 'good' and time = ?3 group by arc.arc_id)) " +
+            "a join (select arc_id, sum(estimating_time) estimating_time from point_arc " +
+            "where time = ?3 group by arc_id) b on a.arc_id = b.arc_id order by estimating_time asc",nativeQuery = true)
+    Object getBestRoad(Integer startPoint, Integer endPoint, String time);
 }
