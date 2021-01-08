@@ -54,4 +54,14 @@ public class Point {
     public void setY(Double y) {
         this.y = y;
     }
+
+    @Override
+    public String toString() {
+        return "Point{" +
+                "pointId=" + pointId +
+                ", x=" + x +
+                ", y=" + y +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }

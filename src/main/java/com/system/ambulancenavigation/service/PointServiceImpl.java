@@ -37,12 +37,23 @@ public class PointServiceImpl extends BaseServiceImpl<Point, Long> implements Po
     }
 
     @Override
-    public Object getNearestPoint(Double point) {
-        return pointRepository.getNearestPoint(point);
+    public Object getNearestPoint(Double x, Double y) {
+        return pointRepository.getNearestPoint(x,y);
     }
 
-    @Override
-    public Object getBestRoad(Integer startPoint, Integer endPoint, String time){
-        return pointRepository.getBestRoad(startPoint,endPoint,time);
+    public Point getPointById(Double x, Double y){
+        return pointRepository.getPointById(x, y);
     }
+
+    public List<Object> getRoads(Double startPointX, Double startPointY, Double endPointX, Double endPointY, String startTime, String endTime){
+        return pointRepository.getRoads(startPointX,startPointY,endPointX,endPointY,startTime,endTime);
+    }
+    public List<Object> getPointsByArc(Integer arcId){
+        return pointRepository.getPointsByArc(arcId);
+    }
+
+    public List<Object> getBadRoads(Double startPointX, Double startPointY, Double endPointX, Double endPointY, String startTime, String endTime){
+        return pointRepository.getBadRoads(startPointX, startPointY, endPointX, endPointY, startTime, endTime);
+    }
+
 }

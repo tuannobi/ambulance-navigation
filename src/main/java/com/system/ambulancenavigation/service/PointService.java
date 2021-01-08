@@ -11,7 +11,9 @@ import java.util.List;
 
 public interface PointService extends BaseService<Point, Long> {
     List<Point> getPoints();
-
-    Object getNearestPoint(Double point);
-    Object getBestRoad(Integer startPoint, Integer endPoint, String time);
+    Object getNearestPoint(Double x, Double y);
+    Point getPointById(Double x, Double y);
+    List<Object> getRoads(Double startPointX, Double startPointY, Double endPointX, Double endPointY, String startTime, String endTime);
+    List<Object> getPointsByArc(Integer arcId);
+    List<Object> getBadRoads(Double startPointX, Double startPointY, Double endPointX, Double endPointY, String startTime, String endTime);
 }
